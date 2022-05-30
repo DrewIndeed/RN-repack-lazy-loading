@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prepare": "exit 0",
+    "test": "exit 0",
+    "lint": "exit 0",
+    "tsc": "exit 0",
+    "build": "exit 0",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "start": "react-native webpack-start",
+    "bundle": "react-native webpack-bundle --platform ios --entry-file index.js --bundle-output ./dist/index.bundle --dev=false",
+    "webpack": "PLATFORM=ios webpack -c webpack.config.js"
   },
   "dependencies": {
     "react": "17.0.2",
