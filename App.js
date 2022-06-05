@@ -8,7 +8,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import {StartupTime} from 'react-native-startup-time';
 import {
   Colors,
   DebugInstructions,
@@ -53,6 +53,7 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
@@ -76,6 +77,8 @@ const App = () => {
           </Section>
           <LearnMoreLinks />
         </View>
+
+        <StartupTime style={{marginTop: 180}} />
       </ScrollView>
     </SafeAreaView>
   );
