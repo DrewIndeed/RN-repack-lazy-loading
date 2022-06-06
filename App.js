@@ -38,9 +38,9 @@ const App = () => {
             <Remote />
           </Suspense>
         </View>
-
-        <StartupTime style={{marginTop: 180}} />
       </ScrollView>
+      
+      <StartupTime style={{marginTop: 180}} />
     </SafeAreaView>
   );
 };

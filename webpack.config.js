@@ -248,7 +248,14 @@ module.exports = {
     new ReactNative.OutputPlugin({
       platform,
       devServerEnabled: devServer.enabled,
-      localChunks: ['andrew-section', 'andrew-remote'],
+      localChunks: [
+        'andrew-remote',
+        'andrew-section',
+        'andrew-section1',
+        'andrew-section2',
+        'andrew-section3',
+        'andrew-section4',
+      ],
       remoteChunksOutput: path.join(__dirname, 'build', platform, 'remote'),
     }),
 
