@@ -31,8 +31,7 @@ const ReactNative = require('@callstack/repack');
  * to specify your values, if the defaults don't suit your project.
  */
 
-// const mode = ReactNative.getMode({fallback: 'development'});
-const mode = 'production';
+const mode = ReactNative.getMode({fallback: 'development'});
 const dev = mode === 'development';
 const context = ReactNative.getContext();
 const entry = ReactNative.getEntry();
@@ -249,7 +248,7 @@ module.exports = {
     new ReactNative.OutputPlugin({
       platform,
       devServerEnabled: devServer.enabled,
-      localChunks: [/Async/],
+      localChunks: ['andrew-section', 'andrew-remote'],
       remoteChunksOutput: path.join(__dirname, 'build', platform, 'remote'),
     }),
 
