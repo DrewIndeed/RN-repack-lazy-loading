@@ -15,6 +15,7 @@
     "webpack": "PLATFORM=ios webpack -c webpack.config.js"
   },
   "dependencies": {
+    "lodash.throttle": "^4.1.1",
     "react": "17.0.2",
     "react-native": "0.68.2"
   },
@@ -31,7 +32,8 @@
     "react-native-startup-time": "^2.0.0",
     "react-test-renderer": "17.0.2",
     "terser-webpack-plugin": "^5.3.1",
-    "webpack": "^5.72.1"
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   },
   "jest": {
     "preset": "react-native"

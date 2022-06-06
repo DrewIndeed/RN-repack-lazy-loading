@@ -31,7 +31,8 @@ const ReactNative = require('@callstack/repack');
  * to specify your values, if the defaults don't suit your project.
  */
 
-const mode = ReactNative.getMode({fallback: 'development'});
+// const mode = ReactNative.getMode({fallback: 'development'});
+const mode = 'production';
 const dev = mode === 'development';
 const context = ReactNative.getContext();
 const entry = ReactNative.getEntry();
