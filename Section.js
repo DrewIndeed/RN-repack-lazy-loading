@@ -1,9 +1,23 @@
 import React from 'react';
-import {StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+  useWindowDimensions,
+  Button,
+} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default function Section({children, title}) {
+  const {height, width} = useWindowDimensions();
   const isDarkMode = useColorScheme() === 'dark';
+
+  const getStyleValuesRatioToScreen = (targetValue, width, height) => ({
+    r2w: Number.parseFloat(targetValue / width).toFixed(4),
+    r2h: Number.parseFloat(targetValue / height).toFixed(4),
+  });
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -15,6 +29,17 @@ export default function Section({children, title}) {
         ]}>
         {title}
       </Text>
+      <Button
+        title="Press Me Lord"
+        onPress={() => {
+          const {r2w, r2h} = getStyleValuesRatioToScreen(
+            styles.sectionTitle.fontSize,
+            width,
+            height,
+          );
+          alert(`Result: r2w = ${r2w}; r2h = ${r2h}`);
+        }}
+      />
       <Text
         style={[
           styles.sectionDescription,

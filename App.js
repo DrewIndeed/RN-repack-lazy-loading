@@ -6,6 +6,8 @@ import {
   Text,
   useColorScheme,
   View,
+  useWindowDimensions,
+  Button,
 } from 'react-native';
 import {StartupTime} from 'react-native-startup-time';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
@@ -15,6 +17,8 @@ const Remote = lazy(() =>
 );
 
 const App = () => {
+  const {height, width} = useWindowDimensions();
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -24,6 +28,12 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+
+      <Button
+        color="red"
+        title="Press Me Son"
+        onPress={() => alert(`w is ${width}; h is ${height}`)}
+      />
 
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -39,7 +49,7 @@ const App = () => {
           </Suspense>
         </View>
       </ScrollView>
-      
+
       <StartupTime style={{marginTop: 180}} />
     </SafeAreaView>
   );
