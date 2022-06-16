@@ -15,7 +15,7 @@ const App = () => {
   const testValues = [80, 120, 200];
   const testColors1 = ['red', 'blue', 'green'];
   const testColors2 = ['cyan', 'pink', 'orange'];
-  const secondSectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
+  const sectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
 
   const testViewWidth = BaseScaler.getWidthBasedTransformValue(800);
   const testViewHeight = BaseScaler.getWidthBasedTransformValue(300);
@@ -44,6 +44,7 @@ const App = () => {
             flexDirection: 'row',
             width: testViewWidth,
             height: testViewHeight,
+            marginTop: sectionMarginTop,
           }}>
           {widthsForHorizontal.map((val, idx) => (
             <View
@@ -69,7 +70,7 @@ const App = () => {
               alert(
                 `w is ${width}; h is ${height}; testViewWidth: ${
                   testViewWidth / 2
-                }; testViewHeight: ${testViewHeight}; secondSectionMarginTop: ${secondSectionMarginTop}`,
+                }; testViewHeight: ${testViewHeight}; sectionMarginTop: ${sectionMarginTop}`,
               )
             }
           />
@@ -78,7 +79,7 @@ const App = () => {
         <View
           style={{
             display: 'flex',
-            marginTop: BaseScaler.getWidthBasedTransformValue(30),
+            marginTop: sectionMarginTop,
             width: testViewWidth,
             height: testViewHeight,
           }}>
