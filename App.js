@@ -16,7 +16,6 @@ const App = () => {
   const testColors1 = ['red', 'blue', 'green'];
   const testColors2 = ['cyan', 'pink', 'orange'];
   const sectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
-  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20);
 
   const testViewWidth = BaseScaler.getWidthBasedTransformValue(800);
   const testViewHeight = BaseScaler.getWidthBasedTransformValue(300);
@@ -35,6 +34,12 @@ const App = () => {
     (acc, cur) => acc + cur,
     0,
   );
+
+  if (width > 390) {
+    BaseScaler.setCustomRatio(0.75);
+  }
+
+  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'yellow'}}>
