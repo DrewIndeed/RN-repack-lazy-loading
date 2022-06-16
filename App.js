@@ -12,30 +12,27 @@ import BaseScaler from './Scaler';
 const App = () => {
   const {height, width} = useWindowDimensions();
 
-  const testValues = [80, 120, 200];
+  const testValues = [35, 45, 65];
   const testColors1 = ['red', 'blue', 'green'];
   const testColors2 = ['cyan', 'pink', 'orange'];
-  const sectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
 
-  const testViewWidth = BaseScaler.getWidthBasedTransformValue(800);
-  const testViewHeight = BaseScaler.getWidthBasedTransformValue(300);
+  const testContainerMarginTop = BaseScaler.getWidthBasedTransformValue(30);
+  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20, 0.75);
 
-  const baseHeightForHorizontal = BaseScaler.getWidthBasedTransformValue(300);
-  const widthsForHorizontal = testValues.map(v =>
+  const otherDimension = BaseScaler.getWidthBasedTransformValue(200);
+
+  const transformDimensionsArray = testValues.map(v =>
     BaseScaler.getWidthBasedTransformValue(v),
   );
 
-  const baseWidthForVertival = BaseScaler.getWidthBasedTransformValue(360);
   const heightsForVertival = testValues.map(v =>
     BaseScaler.getWidthBasedTransformValue(v),
   );
 
-  const sumOfTransformValues = widthsForHorizontal.reduce(
+  const sumOfTransformValues = transformDimensionsArray.reduce(
     (acc, cur) => acc + cur,
     0,
   );
-
-  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20, 0.75);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'yellow'}}>
@@ -44,21 +41,19 @@ const App = () => {
           style={{
             display: 'flex',
             flexDirection: 'row',
-            width: testViewWidth,
-            height: testViewHeight,
-            marginTop: sectionMarginTop,
+            marginTop: testContainerMarginTop,
           }}>
-          {widthsForHorizontal.map((val, idx) => (
+          {transformDimensionsArray.map((val, idx) => (
             <View
               key={val + idx}
               style={{
-                height: baseHeightForHorizontal,
-                width: widthsForHorizontal[idx],
+                height: otherDimension,
+                width: transformDimensionsArray[idx],
                 backgroundColor: testColors1[idx],
               }}>
               <Text style={{color: 'white', fontSize: sectionFontSize}}>
                 {(
-                  (widthsForHorizontal[idx] / sumOfTransformValues) *
+                  (transformDimensionsArray[idx] / sumOfTransformValues) *
                   100
                 ).toFixed(2)}{' '}
                 % of {sumOfTransformValues} in WIDTH
@@ -73,9 +68,9 @@ const App = () => {
             title="Press Me Son"
             onPress={() =>
               alert(
-                `w is ${width}; h is ${height}; testViewWidth: ${
-                  testViewWidth / 2
-                }; testViewHeight: ${testViewHeight}; sectionMarginTop: ${sectionMarginTop}`,
+                `w is ${width}; h is ${height}; percentToWholeWidth: ${
+                  (sumOfTransformValues / width).toFixed(4) * 100
+                } %`,
               )
             }
           />
@@ -84,16 +79,14 @@ const App = () => {
         <View
           style={{
             display: 'flex',
-            marginTop: sectionMarginTop,
-            width: testViewWidth,
-            height: testViewHeight,
+            marginTop: testContainerMarginTop,
           }}>
           {heightsForVertival.map((val, idx) => (
             <View
               key={val + idx}
               style={{
                 height: heightsForVertival[idx],
-                width: baseWidthForVertival,
+                width: otherDimension,
                 backgroundColor: testColors2[idx],
               }}>
               <Text style={{fontSize: sectionFontSize}}>
