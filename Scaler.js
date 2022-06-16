@@ -57,5 +57,9 @@ class Scaler {
   }
 }
 
-const BaseScaler = new Scaler(390, 844);
+const BaseScaler =
+  Dimensions.get('window').width <= Dimensions.get('window').height
+    ? new Scaler(390, 844)
+    : new Scaler(844, 390);
+
 export default BaseScaler;
