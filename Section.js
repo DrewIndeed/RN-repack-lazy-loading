@@ -33,7 +33,6 @@ export default function Section({children, title}) {
           }}
         />
       )}
-
       <Text
         style={[
           styles.sectionTitle,
