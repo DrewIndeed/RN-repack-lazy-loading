@@ -35,11 +35,7 @@ const App = () => {
     0,
   );
 
-  if (width > 390) {
-    BaseScaler.setCustomRatio(0.75);
-  }
-
-  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20);
+  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20, 0.75);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'yellow'}}>
@@ -61,8 +57,11 @@ const App = () => {
                 backgroundColor: testColors1[idx],
               }}>
               <Text style={{color: 'white', fontSize: sectionFontSize}}>
-                {(widthsForHorizontal[idx] / sumOfTransformValues) * 100} % of{' '}
-                {sumOfTransformValues} in WIDTH
+                {(
+                  (widthsForHorizontal[idx] / sumOfTransformValues) *
+                  100
+                ).toFixed(2)}{' '}
+                % of {sumOfTransformValues} in WIDTH
               </Text>
             </View>
           ))}
@@ -98,8 +97,11 @@ const App = () => {
                 backgroundColor: testColors2[idx],
               }}>
               <Text style={{fontSize: sectionFontSize}}>
-                {(heightsForVertival[idx] / sumOfTransformValues) * 100} % of{' '}
-                {sumOfTransformValues} in HEIGHT
+                {(
+                  (heightsForVertival[idx] / sumOfTransformValues) *
+                  100
+                ).toFixed(2)}{' '}
+                % of {sumOfTransformValues} in HEIGHT
               </Text>
             </View>
           ))}
