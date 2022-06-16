@@ -8,6 +8,32 @@ export default function Section({children, title}) {
 
   return (
     <View style={styles.sectionContainer}>
+      {title === 'Learn More' && (
+        <Button
+          title="Press Me Lord"
+          onPress={() => {
+            console.log(
+              BaseScaler.getBaseHeight(),
+              BaseScaler.getBaseWidth(),
+              BaseScaler.getCustomRatio(),
+              BaseScaler.getWidthBasedTransformValue(12),
+              BaseScaler.getHeightBasedTransformValue(12),
+            );
+
+            BaseScaler.setBaseHeight(812);
+            BaseScaler.setBaseWidth(375);
+
+            console.log(
+              BaseScaler.getBaseHeight(),
+              BaseScaler.getBaseWidth(),
+              BaseScaler.getCustomRatio(),
+              BaseScaler.getWidthBasedTransformValue(12),
+              BaseScaler.getHeightBasedTransformValue(12),
+            );
+          }}
+        />
+      )}
+
       <Text
         style={[
           styles.sectionTitle,
@@ -17,29 +43,7 @@ export default function Section({children, title}) {
         ]}>
         {title}
       </Text>
-      <Button
-        title="Press Me Lord"
-        onPress={() => {
-          console.log(
-            BaseScaler.getBaseHeight(),
-            BaseScaler.getBaseWidth(),
-            BaseScaler.getCustomRatio(),
-            BaseScaler.getWidthBasedTransformValue(12),
-            BaseScaler.getHeightBasedTransformValue(12)
-          );
 
-          BaseScaler.setBaseHeight(812);
-          BaseScaler.setBaseWidth(375);
-
-          console.log(
-            BaseScaler.getBaseHeight(),
-            BaseScaler.getBaseWidth(),
-            BaseScaler.getCustomRatio(),
-            BaseScaler.getWidthBasedTransformValue(12),
-            BaseScaler.getHeightBasedTransformValue(12),
-          );
-        }}
-      />
       <Text
         style={[
           styles.sectionDescription,
@@ -55,16 +59,16 @@ export default function Section({children, title}) {
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    marginTop: BaseScaler.getWidthBasedTransformValue(32),
+    paddingHorizontal: BaseScaler.getWidthBasedTransformValue(24),
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: BaseScaler.getWidthBasedTransformValue(24),
     fontWeight: '600',
   },
   sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
+    marginTop: BaseScaler.getWidthBasedTransformValue(8),
+    fontSize: BaseScaler.getWidthBasedTransformValue(18),
     fontWeight: '400',
   },
   highlight: {

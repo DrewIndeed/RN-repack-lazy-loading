@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 // import {StartupTime} from 'react-native-startup-time';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import BaseScaler from './Scaler';
 
 const Remote = lazy(() =>
   import(/* webpackChunkName: "andrew-remote" */ './Remote'),
@@ -38,7 +39,9 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
+        <Text style={{fontSize: BaseScaler.getWidthBasedTransformValue(30)}}>
+          Welcome to React Native
+        </Text>
 
         <View
           style={{
