@@ -56,7 +56,7 @@ const App = () => {
               }}>
               <Text style={{color: 'white'}}>
                 {(widthsForHorizontal[idx] / sumOfTransformValues) * 100} % of{' '}
-                {sumOfTransformValues}
+                {sumOfTransformValues} in WIDTH
               </Text>
             </View>
           ))}
@@ -93,7 +93,7 @@ const App = () => {
               }}>
               <Text>
                 {(heightsForVertival[idx] / sumOfTransformValues) * 100} % of{' '}
-                {sumOfTransformValues}
+                {sumOfTransformValues} in HEIGHT
               </Text>
             </View>
           ))}
