@@ -1,22 +1,10 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  useWindowDimensions,
-  Button,
-} from 'react-native';
+import {StyleSheet, Text, useColorScheme, View, Button} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import BaseScaler from './Scaler';
 
 export default function Section({children, title}) {
-  const {height, width} = useWindowDimensions();
   const isDarkMode = useColorScheme() === 'dark';
-
-  const getStyleValuesRatioToScreen = (targetValue, width, height) => ({
-    r2w: Number.parseFloat(targetValue / width).toFixed(4),
-    r2h: Number.parseFloat(targetValue / height).toFixed(4),
-  });
 
   return (
     <View style={styles.sectionContainer}>
@@ -32,12 +20,24 @@ export default function Section({children, title}) {
       <Button
         title="Press Me Lord"
         onPress={() => {
-          const {r2w, r2h} = getStyleValuesRatioToScreen(
-            styles.sectionTitle.fontSize,
-            width,
-            height,
+          console.log(
+            BaseScaler.getBaseHeight(),
+            BaseScaler.getBaseWidth(),
+            BaseScaler.getCustomRatio(),
+            BaseScaler.getWidthBasedTransformValue(12),
+            BaseScaler.getHeightBasedTransformValue(12)
           );
-          alert(`Result: r2w = ${r2w}; r2h = ${r2h}`);
+
+          BaseScaler.setBaseHeight(812);
+          BaseScaler.setBaseWidth(375);
+
+          console.log(
+            BaseScaler.getBaseHeight(),
+            BaseScaler.getBaseWidth(),
+            BaseScaler.getCustomRatio(),
+            BaseScaler.getWidthBasedTransformValue(12),
+            BaseScaler.getHeightBasedTransformValue(12),
+          );
         }}
       />
       <Text

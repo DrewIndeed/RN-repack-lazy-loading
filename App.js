@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
   Button,
 } from 'react-native';
-import {StartupTime} from 'react-native-startup-time';
+// import {StartupTime} from 'react-native-startup-time';
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 const Remote = lazy(() =>
@@ -50,7 +50,7 @@ const App = () => {
         </View>
       </ScrollView>
 
-      <StartupTime style={{marginTop: 180}} />
+      {/* <StartupTime style={{marginTop: 180}} /> */}
     </SafeAreaView>
   );
 };
