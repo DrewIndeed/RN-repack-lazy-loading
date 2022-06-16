@@ -15,9 +15,10 @@ const App = () => {
   const testValues = [80, 120, 200];
   const testColors1 = ['red', 'blue', 'green'];
   const testColors2 = ['cyan', 'pink', 'orange'];
+  const secondSectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
 
-  const testViewWidth = Math.ceil(BaseScaler.getWidthBasedTransformValue(800));
-  const testViewHeight = Math.ceil(BaseScaler.getWidthBasedTransformValue(300));
+  const testViewWidth = BaseScaler.getWidthBasedTransformValue(800);
+  const testViewHeight = BaseScaler.getWidthBasedTransformValue(300);
 
   const baseHeightForHorizontal = BaseScaler.getWidthBasedTransformValue(300);
   const widthsForHorizontal = testValues.map(v =>
@@ -36,16 +37,6 @@ const App = () => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'yellow'}}>
-      <Button
-        color="red"
-        title="Press Me Son"
-        onPress={() =>
-          alert(
-            `w is ${width}; h is ${height}; testViewWidth: ${testViewWidth}; testViewHeight: ${testViewHeight}`,
-          )
-        }
-      />
-
       <ScrollView>
         <View
           style={{
@@ -63,13 +54,25 @@ const App = () => {
                 backgroundColor: testColors1[idx],
               }}>
               <Text style={{color: 'white'}}>
-                {Math.ceil(
-                  (widthsForHorizontal[idx] / sumOfTransformValues) * 100,
-                )}{' '}
-                % of {sumOfTransformValues}
+                {(widthsForHorizontal[idx] / sumOfTransformValues) * 100} % of{' '}
+                {sumOfTransformValues}
               </Text>
             </View>
           ))}
+        </View>
+
+        <View style={{backgroundColor: 'purple'}}>
+          <Button
+            color="black"
+            title="Press Me Son"
+            onPress={() =>
+              alert(
+                `w is ${width}; h is ${height}; testViewWidth: ${
+                  testViewWidth / 2
+                }; testViewHeight: ${testViewHeight}; secondSectionMarginTop: ${secondSectionMarginTop}`,
+              )
+            }
+          />
         </View>
 
         <View
@@ -88,10 +91,8 @@ const App = () => {
                 backgroundColor: testColors2[idx],
               }}>
               <Text>
-                {Math.ceil(
-                  (heightsForVertival[idx] / sumOfTransformValues) * 100,
-                )}{' '}
-                % of {sumOfTransformValues}
+                {(heightsForVertival[idx] / sumOfTransformValues) * 100} % of{' '}
+                {sumOfTransformValues}
               </Text>
             </View>
           ))}
