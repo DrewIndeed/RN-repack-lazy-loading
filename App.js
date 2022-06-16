@@ -16,6 +16,7 @@ const App = () => {
   const testColors1 = ['red', 'blue', 'green'];
   const testColors2 = ['cyan', 'pink', 'orange'];
   const sectionMarginTop = BaseScaler.getWidthBasedTransformValue(30);
+  const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20);
 
   const testViewWidth = BaseScaler.getWidthBasedTransformValue(800);
   const testViewHeight = BaseScaler.getWidthBasedTransformValue(300);
@@ -54,7 +55,7 @@ const App = () => {
                 width: widthsForHorizontal[idx],
                 backgroundColor: testColors1[idx],
               }}>
-              <Text style={{color: 'white'}}>
+              <Text style={{color: 'white', fontSize: sectionFontSize}}>
                 {(widthsForHorizontal[idx] / sumOfTransformValues) * 100} % of{' '}
                 {sumOfTransformValues} in WIDTH
               </Text>
@@ -91,7 +92,7 @@ const App = () => {
                 width: baseWidthForVertival,
                 backgroundColor: testColors2[idx],
               }}>
-              <Text>
+              <Text style={{fontSize: sectionFontSize}}>
                 {(heightsForVertival[idx] / sumOfTransformValues) * 100} % of{' '}
                 {sumOfTransformValues} in HEIGHT
               </Text>
