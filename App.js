@@ -10,25 +10,33 @@ import {
 import BaseScaler from './Scaler';
 
 const App = () => {
+  // get current device dimensions
   const {height, width} = useWindowDimensions();
 
-  const testValues = [35, 45, 65];
+  // test integer values for each inner views
+  const testValues = [35, 45, 65]; // sum = 290
+
+  // test colors for the first 3 inner views
   const testColors1 = ['red', 'blue', 'green'];
+
+  // test colors for the last 3 inner views
   const testColors2 = ['cyan', 'pink', 'orange'];
 
+  // margin top for the second section
   const testContainerMarginTop = BaseScaler.getWidthBasedTransformValue(30);
+
+  // font size of the views
   const sectionFontSize = BaseScaler.getWidthBasedTransformValue(20, 0.75);
 
+  // the other dimension of the section container ̣(e.g it width is already 290, its height will be this value)
   const otherDimension = BaseScaler.getWidthBasedTransformValue(200);
 
+  // array of transformed values of the integer values for each inner views
   const transformDimensionsArray = testValues.map(v =>
     BaseScaler.getWidthBasedTransformValue(v),
   );
 
-  const heightsForVertival = testValues.map(v =>
-    BaseScaler.getWidthBasedTransformValue(v),
-  );
-
+  // sum of the values of the above array
   const sumOfTransformValues = transformDimensionsArray.reduce(
     (acc, cur) => acc + cur,
     0,
@@ -37,6 +45,7 @@ const App = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'yellow'}}>
       <ScrollView>
+        {/* horizontally orientated section */}
         <View
           style={{
             display: 'flex',
@@ -62,6 +71,7 @@ const App = () => {
           ))}
         </View>
 
+        {/* button to print out device's dimensions and percentToWholeWidth */}
         <View style={{backgroundColor: 'purple'}}>
           <Button
             color="black"
@@ -76,22 +86,23 @@ const App = () => {
           />
         </View>
 
+        {/* vertically orientated section  */}
         <View
           style={{
             display: 'flex',
             marginTop: testContainerMarginTop,
           }}>
-          {heightsForVertival.map((val, idx) => (
+          {transformDimensionsArray.map((val, idx) => (
             <View
               key={val + idx}
               style={{
-                height: heightsForVertival[idx],
+                height: transformDimensionsArray[idx],
                 width: otherDimension,
                 backgroundColor: testColors2[idx],
               }}>
               <Text style={{fontSize: sectionFontSize}}>
                 {(
-                  (heightsForVertival[idx] / sumOfTransformValues) *
+                  (transformDimensionsArray[idx] / sumOfTransformValues) *
                   100
                 ).toFixed(2)}{' '}
                 % of {sumOfTransformValues} in HEIGHT
